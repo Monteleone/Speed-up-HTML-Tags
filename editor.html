@@ -5,64 +5,103 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Speed up HTML Tags</title>
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
 
-    #title {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 24px;
-    }
+        #title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+        }
 
-    #editor-container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end; /* Modificato */
-        height: 80vh; /* Altezza iniziale */
-        overflow-y: auto; /* Barra di scorrimento verticale */
-    }
+        #editor-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Modificato */
+            height: 80vh; /* Altezza iniziale */
+            overflow-y: auto; /* Barra di scorrimento verticale */
+        }
 
-    #editor {
-        width: 600px; /* Larghezza iniziale */
-        min-width: 300px; /* Larghezza minima */
-        max-width: 800px; /* Larghezza massima */
-        height: 400px; /* Altezza iniziale */
-        min-height: 200px; /* Altezza minima */
-        max-height: 600px; /* Altezza massima */
-        border: 1px solid #ccc;
-        padding: 20px;
-        margin-right: 10px; /* Aggiunto margine destro */
-        resize: both; /* Consentire il ridimensionamento con il mouse */
-        overflow: auto; /* Barra di scorrimento interna */
-    }
+        #editor {
+            width: 600px; /* Larghezza iniziale */
+            min-width: 300px; /* Larghezza minima */
+            max-width: 800px; /* Larghezza massima */
+            height: 400px; /* Altezza iniziale */
+            min-height: 400px; /* Altezza minima */
+            max-height: 600px; /* Altezza massima */
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-right: 10px; /* Aggiunto margine destro */
+            resize: both; /* Consentire il ridimensionamento con il mouse */
+            overflow: auto; /* Barra di scorrimento interna */
+        }
 
-    #legend-container {
-        width: 200px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-top: 10px; /* Aggiunto margine superiore */
-    }
+        #legend-container {
+            width: 200px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px; /* Aggiunto margine superiore */
+            min-height: 600px; /* Altezza minima per il contenitore della leggenda */
+        }
 
-    #legend-container h2 {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
+        #legend-container h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
 
-    #legend-container code {
-        display: block;
-        margin-bottom: 10px;
-        white-space: pre-wrap; /* Permette di andare a capo */
-        word-wrap: break-word; /* Forza il testo a spezzarsi quando necessario */
-    }
+        #legend-container code {
+            display: block;
+            margin-bottom: 10px;
+            white-space: pre-wrap; /* Permette di andare a capo */
+            word-wrap: break-word; /* Forza il testo a spezzarsi quando necessario */
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px; /* Spazio tra i pulsanti */
+        }
+
+        button {
+            width: 100%;
+            height: 50px;
+            font-size: 16px;
+            border: none;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+  
 </style>
 </head>
 <body>
 <h1 id="title">Speed up HTML Tags</h1>
 <div id="editor-container">
+ <div id="legend-container">
+        <h2>Legend</h2>
+		<div class="grid-container">
+		  <button></button>
+		  <button></button>
+		  <button></button>
+		  <button></button>
+		  <button></button>
+		  <button></button>
+		  <button></button>
+		  <button></button>
+		  <button></button>
+		</div>
+    </div>
     <div id="editor" contenteditable="true">
         Select some text and right click to apply HTML tags.
     </div>
