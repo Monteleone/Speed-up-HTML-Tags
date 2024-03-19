@@ -92,7 +92,7 @@
         <h2>Buttons</h2>
 		<div class="grid-container">
 		  <button onclick="applyTagsToKeywords()">applyBTag</button>
-		  <button></button>
+		  <button onclick="addLineBreak()">addbr</button>
 		  <button></button>
 		  <button></button>
 		  <button></button>
@@ -141,6 +141,13 @@ function applyTagsToKeywords() {
     document.getElementById("editor").innerHTML = modifiedContent;
 }
 
+function addLineBreak() {
+    var editor = document.getElementById("editor");
+    var selection = window.getSelection();
+    var range = selection.getRangeAt(0);
+    var br = document.createTextNode("</br>");
+    range.insertNode(br);
+}
 
 
 // Aggiunta dell'ascoltatore per rimuovere il menu quando si fa clic altrove
