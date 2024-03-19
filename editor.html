@@ -89,9 +89,9 @@
 <h1 id="title">Speed up HTML Tags</h1>
 <div id="editor-container">
  <div id="legend-container">
-        <h2>Legend</h2>
+        <h2>Buttons</h2>
 		<div class="grid-container">
-		  <button></button>
+		  <button onclick="applyTagsToKeywords()">applyBTag</button>
 		  <button></button>
 		  <button></button>
 		  <button></button>
@@ -131,6 +131,18 @@
 </div>
 
 <script>
+
+function applyTagsToKeywords() {
+    var editorContent = document.getElementById("editor").innerHTML;
+    var modifiedContent = editorContent.replace(/ABSTRACT/g, "&lt;b&gt;ABSTRACT&lt;/b&gt;")
+                                       .replace(/SOMMARIO/g, "&lt;b&gt;SOMMARIO&lt;/b&gt;")
+                                       .replace(/KEYWORDS:/g, "&lt;b&gt;KEYWORDS:&lt;/b&gt;")
+                                       .replace(/PAROLE CHIAVE:/g, "&lt;b&gt;PAROLE CHIAVE:&lt;/b&gt;");
+    document.getElementById("editor").innerHTML = modifiedContent;
+}
+
+
+
 // Aggiunta dell'ascoltatore per rimuovere il menu quando si fa clic altrove
 document.addEventListener("click", function(e) {
     var menu = document.getElementById("tagMenu");
