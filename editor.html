@@ -71,17 +71,17 @@
         <code>&lt;li&gt;</code>
         <code>&lt;b&gt;&lt;/b&gt;</code>
         <code>&lt;details style="background: #eee; margin-bottom: 2rem; padding: .5rem 1rem;"&gt;</code>
-        <code>&lt;/br&gt;</code>
+        <code>&lt;br&gt;</code>
         <code>&lt;p&gt;</code>
         <code>&lt;b&gt;ABSTRACT&lt;/b&gt;</code>
-        <code>&lt;/br&gt;</code>
+        <code>&lt;br&gt;</code>
         <code>&lt;/p&gt;</code>
         <code>&lt;p&gt;</code>
         <code>&lt;b&gt;KEYWORDS:&lt;/b&gt;</code>
         <code>&lt;/p&gt;</code> 
         <code>&lt;p&gt;</code>
         <code>&lt;b&gt;SOMMARIO&lt;/b&gt;</code>
-        <code>&lt;/br&gt;</code>
+        <code>&lt;br&gt;</code>
         <code>&lt;/p&gt;</code>
         <code>&lt;p&gt;</code>
         <code>&lt;b&gt;PAROLE CHIAVE:&lt;/b&gt;</code>
@@ -92,6 +92,14 @@
 </div>
 
 <script>
+// Aggiunta dell'ascoltatore per rimuovere il menu quando si fa clic altrove
+document.addEventListener("click", function(e) {
+    var menu = document.getElementById("tagMenu");
+    if (menu && e.target !== menu) {
+        menu.remove();
+    }
+});
+
 document.getElementById("editor").addEventListener("contextmenu", function(e) {
     e.preventDefault();
 
@@ -128,7 +136,7 @@ document.getElementById("editor").addEventListener("contextmenu", function(e) {
 
         var option5 = document.createElement("option");
         option5.value = "br";
-        option5.textContent = "<br/>";
+        option5.textContent = "<br>";
         menu.appendChild(option5);
 
         menu.addEventListener("change", function() {
@@ -150,7 +158,7 @@ document.getElementById("editor").addEventListener("contextmenu", function(e) {
                         taggedText = "<b>" + selectedText + "</b>";
                         break;
                     case "br":
-                        taggedText = "<br/>";
+                        taggedText = selectedText + "</br>";
                         break;
                 }
 
@@ -158,6 +166,7 @@ document.getElementById("editor").addEventListener("contextmenu", function(e) {
                 range.deleteContents();
                 range.insertNode(document.createTextNode(taggedText));
                 selection.removeAllRanges();
+                menu.remove();
             }
         });
 
@@ -165,12 +174,6 @@ document.getElementById("editor").addEventListener("contextmenu", function(e) {
         menu.style.position = "absolute";
         menu.style.left = e.pageX + "px";
         menu.style.top = e.pageY + "px";
-
-        document.addEventListener("click", function(e) {
-            if (e.target !== menu) {
-                menu.remove();
-            }
-        });
     }
 });
 
