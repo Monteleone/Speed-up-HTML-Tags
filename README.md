@@ -1,5 +1,9 @@
 # Speed-up-HTML-Tags
 
+
+![Test Image](https://raw.githubusercontent.com/Monteleone/Speed-up-HTML-Tags/main/img.PNG)
+
+
 This HTML file provides a tool to expedite the process of applying HTML tags to selected text. It offers a user-friendly interface where users can select text, right-click, and choose from a dropdown menu to apply various HTML tags.
 
 ## How It Works
