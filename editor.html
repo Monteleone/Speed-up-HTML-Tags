@@ -21,16 +21,42 @@
     #editor-container {
         display: flex;
         justify-content: center;
-        align-items: center;
-        height: 100vh;
+        align-items: flex-end; /* Modificato */
+        height: 80vh; /* Altezza iniziale */
+        overflow-y: auto; /* Barra di scorrimento verticale */
     }
 
     #editor {
-        width: 600px; /* Modifica la larghezza dell'editor */
-        height: 400px; /* Modifica l'altezza dell'editor */
+        width: 600px; /* Larghezza iniziale */
+        min-width: 300px; /* Larghezza minima */
+        max-width: 800px; /* Larghezza massima */
+        height: 400px; /* Altezza iniziale */
+        min-height: 200px; /* Altezza minima */
+        max-height: 600px; /* Altezza massima */
         border: 1px solid #ccc;
         padding: 20px;
+        margin-right: 10px; /* Aggiunto margine destro */
+        resize: both; /* Consentire il ridimensionamento con il mouse */
+        overflow: auto; /* Barra di scorrimento interna */
+    }
+
+    #legend-container {
+        width: 200px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 10px; /* Aggiunto margine superiore */
+    }
+
+    #legend-container h2 {
+        font-size: 18px;
         margin-bottom: 10px;
+    }
+
+    #legend-container code {
+        display: block;
+        margin-bottom: 10px;
+        white-space: pre-wrap; /* Permette di andare a capo */
+        word-wrap: break-word; /* Forza il testo a spezzarsi quando necessario */
     }
 </style>
 </head>
@@ -39,6 +65,29 @@
 <div id="editor-container">
     <div id="editor" contenteditable="true">
         Select some text and right click to apply HTML tags.
+    </div>
+    <div id="legend-container">
+        <h2>Legend</h2>
+        <code>&lt;li&gt;</code>
+        <code>&lt;b&gt;&lt;/b&gt;</code>
+        <code>&lt;details style="background: #eee; margin-bottom: 2rem; padding: .5rem 1rem;"&gt;</code>
+        <code>&lt;/br&gt;</code>
+        <code>&lt;p&gt;</code>
+        <code>&lt;b&gt;ABSTRACT&lt;/b&gt;</code>
+        <code>&lt;/br&gt;</code>
+        <code>&lt;/p&gt;</code>
+        <code>&lt;p&gt;</code>
+        <code>&lt;b&gt;KEYWORDS:&lt;/b&gt;</code>
+        <code>&lt;/p&gt;</code> 
+        <code>&lt;p&gt;</code>
+        <code>&lt;b&gt;SOMMARIO&lt;/b&gt;</code>
+        <code>&lt;/br&gt;</code>
+        <code>&lt;/p&gt;</code>
+        <code>&lt;p&gt;</code>
+        <code>&lt;b&gt;PAROLE CHIAVE:&lt;/b&gt;</code>
+        <code>&lt;/p&gt;</code>
+        <code>&lt;/details&gt;</code>
+        <code>&lt;/li&gt;</code>
     </div>
 </div>
 
