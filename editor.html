@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speed up HTML Tags</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    #title {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 24px;
+    }
+
+    #editor-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    #editor {
+        width: 600px; /* Modifica la larghezza dell'editor */
+        height: 400px; /* Modifica l'altezza dell'editor */
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+<h1 id="title">Speed up HTML Tags</h1>
+<div id="editor-container">
+    <div id="editor" contenteditable="true">
+        Select some text and right click to apply HTML tags.
+    </div>
+</div>
+
+<script>
+document.getElementById("editor").addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+
+    var selection = window.getSelection();
+    var selectedText = selection.toString().trim();
+    if (selectedText !== "") {
+        var menu = document.createElement("select");
+        menu.setAttribute("id", "tagMenu");
+
+        var emptyOption = document.createElement("option");
+        emptyOption.value = "";
+        emptyOption.textContent = "Select Tag";
+        menu.appendChild(emptyOption);
+
+        var option1 = document.createElement("option");
+        option1.value = "details";
+        option1.textContent = "<details></details>";
+        menu.appendChild(option1);
+
+        var option2 = document.createElement("option");
+        option2.value = "li";
+        option2.textContent = "<li></li>";
+        menu.appendChild(option2);
+
+        var option3 = document.createElement("option");
+        option3.value = "p";
+        option3.textContent = "<p></p>";
+        menu.appendChild(option3);
+
+        var option4 = document.createElement("option");
+        option4.value = "b";
+        option4.textContent = "<b></b>";
+        menu.appendChild(option4);
+
+        var option5 = document.createElement("option");
+        option5.value = "br";
+        option5.textContent = "<br/>";
+        menu.appendChild(option5);
+
+        menu.addEventListener("change", function() {
+            var selectedTag = menu.options[menu.selectedIndex].value;
+            if (selectedTag !== "") {
+                var taggedText = "";
+
+                switch(selectedTag) {
+                    case "details":
+                        taggedText = "<details style=\"background: #eee; margin-bottom: 2rem; padding: .5rem 1rem;\">" + selectedText + "</details>";
+                        break;
+                    case "li":
+                        taggedText = "<li>" + selectedText + "</li>";
+                        break;
+                    case "p":
+                        taggedText = "<p>" + selectedText + "</p>";
+                        break;
+                    case "b":
+                        taggedText = "<b>" + selectedText + "</b>";
+                        break;
+                    case "br":
+                        taggedText = "<br/>";
+                        break;
+                }
+
+                var range = selection.getRangeAt(0);
+                range.deleteContents();
+                range.insertNode(document.createTextNode(taggedText));
+                selection.removeAllRanges();
+            }
+        });
+
+        document.body.appendChild(menu);
+        menu.style.position = "absolute";
+        menu.style.left = e.pageX + "px";
+        menu.style.top = e.pageY + "px";
+
+        document.addEventListener("click", function(e) {
+            if (e.target !== menu) {
+                menu.remove();
+            }
+        });
+    }
+});
+
+</script>
+
+</body>
+</html>
