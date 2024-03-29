@@ -259,7 +259,7 @@ document.getElementById("editor").addEventListener("contextmenu", function(e) {
                         break;	
 					case "slug":
 						var a_value = document.getElementById("input_a").value;
-						taggedText = "<a href='"+ a_value +"'>" +selectedText.trim().toLowerCase().split(" ").join("-")+ "</a>" ;
+						taggedText = "<a href='"+ a_value + "" + selectedText.trim().toLowerCase().split(" ").join("-") + "'>" + selectedText + "</a>" ;
 						break;
                 }
 
