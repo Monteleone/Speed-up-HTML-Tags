@@ -178,9 +178,14 @@ function addLink() {
 	var input_a = document.getElementById("input_a").value;
     var selection = window.getSelection();
     var range = selection.getRangeAt(0);
-	var stringa_a = "<a href='" + input_a + "'>link text</a>"
-    var link = document.createTextNode(stringa_a);
-    range.insertNode(link);
+    var selectedText = range.toString();
+    var boldText = "&lt;a href='" + input_a + "" + selectedText.trim().toLowerCase().split(" ").join("-") + "'&gt;" + selectedText + "&lt;/a&gt;";
+    var newNode = document.createElement("span");
+    newNode.innerHTML = boldText;
+    range.deleteContents();
+    range.insertNode(newNode);
+
+ 
 }
 
 
