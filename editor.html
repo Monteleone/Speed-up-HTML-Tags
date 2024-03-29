@@ -92,8 +92,8 @@
         <h2>Buttons</h2>
 		<div class="grid-container">
 		  <button onclick="applyTagsToKeywords()">applyBTag</button>
-		  <button onclick="addLineBreak()">addbr</button>
-		  <button></button>
+		  <button onclick="addLineBreak()"><\br\></button>
+		  <button onclick="addLink()"><\a\></button>
 		  <button></button>
 		  <button></button>
 		  <button></button>
@@ -149,6 +149,15 @@ function addLineBreak() {
     range.insertNode(br);
 }
 
+function addLink() {
+    var editor = document.getElementById("editor");
+    var selection = window.getSelection();
+    var range = selection.getRangeAt(0);
+    var link = document.createTextNode("<a href='url'>link text</a>");
+    range.insertNode(link);
+}
+
+
 
 // Aggiunta dell'ascoltatore per rimuovere il menu quando si fa clic altrove
 document.addEventListener("click", function(e) {
@@ -197,6 +206,12 @@ document.getElementById("editor").addEventListener("contextmenu", function(e) {
         option5.textContent = "<br>";
         menu.appendChild(option5);
 
+        var option6 = document.createElement("option");
+        option5.value = "a";
+        option5.textContent = "<a></a>";
+        menu.appendChild(option6);
+		
+		
         menu.addEventListener("change", function() {
             var selectedTag = menu.options[menu.selectedIndex].value;
             if (selectedTag !== "") {
@@ -218,6 +233,9 @@ document.getElementById("editor").addEventListener("contextmenu", function(e) {
                     case "br":
                         taggedText = selectedText + "</br>";
                         break;
+                    case "a":
+                        taggedText = "<a href='url'>" + selectedText + "</a>";  
+                        break;						
                 }
 
                 var range = selection.getRangeAt(0);
