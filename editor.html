@@ -62,8 +62,9 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(1, 1fr);
             gap: 10px; /* Spazio tra i pulsanti */
+			overflow: hidden;
         }
 
         button {
@@ -82,6 +83,12 @@
             background-color: #2980b9;
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
         }
+		
+		#red-box {
+			
+			 
+			border: 2px solid green; /* Bordo nero di 2 pixel */
+		}
   
 </style>
 </head>
@@ -89,13 +96,18 @@
 <h1 id="title">Speed up HTML Tags</h1>
 <div id="editor-container">
  <div id="legend-container">
-        <h2>Buttons</h2>
+        <center><h2>Buttons</h2></center>
 		<div class="grid-container">
 		  <button onclick="applyTagsToKeywords()">applyBTag</button>
 		  <button onclick="addLineBreak()"><\br\></button>
+		  <div id="red-box">
+			  <center>
+			  Source url <\a\>
+			  <input id="input_a"></input>
+			  </center>
+			</br>	
 		  <button onclick="addLink()"><\a\></button>
-		  <button></button>
-		  <button></button>
+		  </div>
 		  <button></button>
 		  <button></button>
 		  <button></button>
@@ -106,7 +118,7 @@
         Select some text and right click to apply HTML tags.
     </div>
     <div id="legend-container">
-        <h2>Legend</h2>
+        <center><h2>Legend</h2></center>
         <code>&lt;li&gt;</code>
         <code>&lt;b&gt;&lt;/b&gt;</code>
         <code>&lt;details style="background: #eee; margin-bottom: 2rem; padding: .5rem 1rem;"&gt;</code>
@@ -151,9 +163,11 @@ function addLineBreak() {
 
 function addLink() {
     var editor = document.getElementById("editor");
+	var input_a = document.getElementById("input_a").value;
     var selection = window.getSelection();
     var range = selection.getRangeAt(0);
-    var link = document.createTextNode("<a href='url'>link text</a>");
+	var stringa_a = "<a href='" + input_a + "'>link text</a>"
+    var link = document.createTextNode(stringa_a);
     range.insertNode(link);
 }
 
