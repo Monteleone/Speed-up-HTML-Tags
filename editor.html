@@ -100,6 +100,7 @@
 		<div class="grid-container">
 		  <button onclick="applyTagsToKeywords()">applyBTag</button>
 		  <button onclick="addLineBreak()"><\br\></button>
+		  <button onclick="addbold()">&lt;b&gt</button>
 		  <div id="red-box">
 			  <center>
 			  Source url <\a\>
@@ -108,7 +109,6 @@
 			</br>	
 		  <button onclick="addLink()"><\a\></button>
 		  </div>
-		  <button></button>
 		  <button></button>
 		  <button></button>
 		  <button></button>
@@ -160,6 +160,18 @@ function addLineBreak() {
     var br = document.createTextNode("</br>");
     range.insertNode(br);
 }
+
+function addbold() {
+    var selection = window.getSelection();
+    var range = selection.getRangeAt(0);
+    var selectedText = range.toString();
+    var boldText = "&lt;b&gt;" + selectedText + "&lt;/b&gt;";
+    var newNode = document.createElement("span");
+    newNode.innerHTML = boldText;
+    range.deleteContents();
+    range.insertNode(newNode);
+}
+
 
 function addLink() {
     var editor = document.getElementById("editor");
