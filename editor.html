@@ -103,7 +103,7 @@
 		  <div id="red-box">
 			  <center>
 			  Source url <\a\>
-			  <input id="input_a"></input>
+			  <input id="input_a" value = ""></input>
 			  </center>
 			</br>	
 		  <button onclick="addLink()"><\a\></button>
@@ -227,7 +227,7 @@ document.getElementById("editor").addEventListener("contextmenu", function(e) {
 
 		var option7 = document.createElement("option");
 		option7.value = "slug";
-		option7.textContent = "slug";
+		option7.textContent = "slug url";
 		menu.appendChild(option7);
 
  
@@ -258,7 +258,8 @@ document.getElementById("editor").addEventListener("contextmenu", function(e) {
                         taggedText = "<a href='url'>" + selectedText + "</a>";  
                         break;	
 					case "slug":
-						taggedText = selectedText.trim().toLowerCase().split(" ").join("-");
+						var a_value = document.getElementById("input_a").value;
+						taggedText = "<a href='"+ a_value +"'>" +selectedText.trim().toLowerCase().split(" ").join("-")+ "</a>" ;
 						break;
                 }
 
