@@ -221,9 +221,16 @@ document.getElementById("editor").addEventListener("contextmenu", function(e) {
         menu.appendChild(option5);
 
         var option6 = document.createElement("option");
-        option5.value = "a";
-        option5.textContent = "<a></a>";
+        option6.value = "a";
+        option6.textContent = "<a></a>";
         menu.appendChild(option6);
+
+		var option7 = document.createElement("option");
+		option7.value = "slug";
+		option7.textContent = "slug";
+		menu.appendChild(option7);
+
+ 
 		
 		
         menu.addEventListener("change", function() {
@@ -249,7 +256,10 @@ document.getElementById("editor").addEventListener("contextmenu", function(e) {
                         break;
                     case "a":
                         taggedText = "<a href='url'>" + selectedText + "</a>";  
-                        break;						
+                        break;	
+					case "slug":
+						taggedText = selectedText.trim().toLowerCase().split(" ").join("-");
+						break;
                 }
 
                 var range = selection.getRangeAt(0);
