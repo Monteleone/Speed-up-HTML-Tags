@@ -16,7 +16,7 @@ This HTML file provides a tool to expedite the process of applying HTML tags to 
 
 ## Features
 
-- Supports commonly used HTML tags like `<details>`, `<li>`, `<p>`, `<b>`, and `<br/>`.
+- Supports commonly used HTML tags like `<details>`, `<li>`, `<p>`, `<b>`, `<a>` and `<br/>`.
 - Provides a simple and intuitive interface.
 - Enhances productivity by streamlining the process of applying HTML tags.
 
